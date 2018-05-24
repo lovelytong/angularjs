@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../User';
 import {NzMessageService} from 'ng-zorro-antd';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+
+import {User} from '../User';
 
 @Component({
   selector: 'app-login',
@@ -23,18 +24,24 @@ export class LoginComponent implements OnInit {
   url = 'http://192.168.1.147:8091';
 
   post() {
+    const next = function (r) {
+      if (r.success) {
+        const type = 'success';
+        const routerUrl = 'home';
+        _this.message.create(type, r.msg);
+        _this.router.navigateByUrl(routerUrl);
+      } else {
+        const type = 'error';
+        _this.message.create(type, r.msg);
+      }
+    };
+    const error = function (e) {
+      _this.message.error(e);
+    };
     const _this = this;
-    this.http.post(this.url + '/ErpLoginUserController/login', this.user)
-      .subscribe(function (r) {
-        if (r.success) {
-          _this.message.create('success', r.msg);
-          _this.router.navigateByUrl('home');
-        } else {
-          _this.message.create('error', r.msg);
-        }
-      }, function (e) {
-        _this.message.error(e);
-      });
+    const url = this.url + '/ErpLoginUserController/login';
+    this.http.post(url, this.user)
+      .subscribe(next, error);
   }
 
   ngOnInit(): void {
