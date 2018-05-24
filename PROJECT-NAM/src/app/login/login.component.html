@@ -1,0 +1,23 @@
+<nz-card style="width:300px;" nzTitle="Card title" [nzExtra]="extraTemplate">
+  <!-- form -->
+  <form nz-form>
+    <nz-form-item>
+      <nz-input-group>
+        <input type="text" nz-input [(ngModel)]="user.name" name="name" placeholder="Username">
+      </nz-input-group>
+    </nz-form-item>
+    <nz-form-item><!-- formControlName="user.password" formControlName="user.name" -->
+      <nz-input-group>
+        <input type="password" nz-input [(ngModel)]="user.password" name="password" placeholder="password">
+      </nz-input-group>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button class="login-form-button" [nzType]="'primary'" (click)="post()">Log in</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-card>
+<ng-template #extraTemplate>
+  <a>More</a>
+</ng-template>
