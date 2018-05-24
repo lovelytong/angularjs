@@ -11,13 +11,21 @@ import {NgZorroAntdModule} from 'ng-zorro-antd';
 
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
+import {WarhouseComponent} from './warhouse/warhouse.component';
+import {CommodityBrandComponent} from './commodity-brand/commodity-brand.component';
+import {GoodsComponent} from './goods/goods.component';
+import {GoodsCategoryComponent} from './goods-category/goods-category.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    WarhouseComponent,
+    CommodityBrandComponent,
+    GoodsComponent,
+    GoodsCategoryComponent
   ],
   imports: [
     BrowserModule,

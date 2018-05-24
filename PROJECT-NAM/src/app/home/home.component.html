@@ -1,3 +1,45 @@
-<p>
-  home works!
-</p>
+<div nz-row>
+  <div nz-col nzSpan="24">
+    title
+  </div>
+</div>
+<div nz-row>
+  <div nz-col nzSpan="4">
+    <ul nz-menu [nzMode]="'inline'" style="width: 240px;">
+      <li nz-submenu>
+        <span title><i class="anticon anticon-mail"></i>基础</span>
+        <ul>
+          <li nz-menu-item routerLink="/home/warehouse">仓库管理</li>
+          <li nz-menu-item routerLink="/home/goodsCategory">商品分类</li>
+          <li nz-menu-item routerLink="/home/brand">商品品牌</li>
+          <li nz-menu-item routerLink="/home/goods">商品管理</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-appstore"></i>消息</span>
+        <ul>
+          <li nz-menu-item>Option 5</li>
+          <li nz-menu-item>Option 6</li>
+          <li nz-submenu>
+            <span title>Submenu</span>
+            <ul>
+              <li nz-menu-item>Option 7</li>
+              <li nz-menu-item>Option 8</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-setting"></i>设置</span>
+        <ul>
+          <li nz-menu-item>Option 9</li>
+          <li nz-menu-item>Option 10</li>
+          <li nz-menu-item>Option 11</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div nz-col nzSpan="20">
+    <router-outlet></router-outlet>
+  </div>
+</div>
