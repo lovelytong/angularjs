@@ -14,6 +14,7 @@ const routes: Routes = [
       path: 'home',
       component: HomeComponent,
       children: [
+        {path: '', redirectTo: '/home/warehouse', pathMatch: 'full'},
         {path: 'warehouse', component: WarhouseComponent},
         {path: 'brand', component: CommodityBrandComponent},
         {path: 'goods', component: GoodsComponent},

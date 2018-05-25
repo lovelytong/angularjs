@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TemplateRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,8 @@ export class HomeComponent implements OnInit {
   triggerTemplate = null;
   @ViewChild('trigger') customTrigger: TemplateRef<void>;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
