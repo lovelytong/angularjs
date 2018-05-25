@@ -21,7 +21,7 @@ export class WarhouseComponent implements OnInit {
 
   pageSize = 5;
   pageIndex = 1; //当前页码
-  total = 50;//总数
+  total = 10;//总数
   frontPagination = false;
 
   constructor(private http: HttpClient, private message: NzMessageService) {
@@ -36,6 +36,7 @@ export class WarhouseComponent implements OnInit {
     let url = this.baseUrl + '/WareHouseController/findAll/' + this.pageIndex + '/' + this.pageSize;
     this.http.get(url).subscribe(r => {
       this.list = r.data;
+      this.total = r.total;
     });
   }
 

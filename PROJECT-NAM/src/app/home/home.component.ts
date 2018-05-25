@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   msg() {
-    let ws = new WebSocket('ws://192.168.1.147:15674/ws');
+    let ws = new WebSocket('ws://58.87.70.95:15674/ws');
     this.client = Stomp.over(ws);
     let _this = this;
     let on_connect = function () {
