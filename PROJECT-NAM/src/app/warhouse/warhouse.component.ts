@@ -17,12 +17,23 @@ export class WarhouseComponent implements OnInit {
   isVisible = false;
   warehouse = {id: '', name: '', number: '', address: ''};
   url = '';
+  baseUrl = window.localStorage.getItem('url');
+
+  pageSize = 5;
+  pageIndex = 1; //当前页码
+  total = 50;//总数
+  frontPagination = false;
 
   constructor(private http: HttpClient, private message: NzMessageService) {
   }
 
+  pageIndexChange() {  //页码回调
+    console.log(this.pageIndex);
+    this.findAll();
+  }
+
   findAll(): void {
-    let url = 'http://192.168.1.147:8091/WareHouseController/findAll/1';
+    let url = this.baseUrl + '/WareHouseController/findAll/' + this.pageIndex + '/' + this.pageSize;
     this.http.get(url).subscribe(r => {
       this.list = r.data;
     });
@@ -33,18 +44,20 @@ export class WarhouseComponent implements OnInit {
   }
 
   create() {
+    this.url = this.baseUrl + '/WareHouseController/merge'; //更换url
     this.warehouse = {id: '', name: '', number: '', address: ''}; //新增初始化 表单
-    this.url = 'http://192.168.1.147:8091/WareHouseController/merge'; //更换url
     this.isVisible = true; //打开模态框
   }
 
   edit() {
-    this.url = 'http://192.168.1.147:8091/WareHouseController/merage';
+    this.url = this.baseUrl + '/WareHouseController/merge';
     this.isVisible = true;
   }
 
-  deleted() {
-    this.url = 'http://192.168.1.147:8091/WareHouseController/del';
+  deleted(val: any) {
+    this.url = this.baseUrl + '/WareHouseController/del';
+    this.warehouse = val;
+    this.post();
   }
 
   post() {

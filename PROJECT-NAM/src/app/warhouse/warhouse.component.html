@@ -1,30 +1,37 @@
-<div nz-row class="title-div">
-  <div nz-col nzSpan="4" nzOffset="20">
-    <button nz-button nzType="primary" nzShape="circle" (click)="create()"><i class="anticon anticon-plus"></i></button>
-    <button nz-button nzType="primary" nzShape="circle" (click)="edit()"><i class="anticon anticon-edit"></i></button>
-    <button nz-button nzType="primary" nzShape="circle" (click)="deleted()"><i class="anticon anticon-close"></i>
-    </button>
-  </div>
-</div>
 <div nz-row class="table-div">
   <div nz-col nzSpan="24">
-    <!-- table -->
-    <nz-table #basicTable [nzData]="list">
+    <!-- table  -->
+    <nz-table #basicTable
+              [nzData]="list" [(nzFrontPagination)]="frontPagination"
+              [(nzPageSize)]="pageSize" (click)="pageIndexChange()"
+              [(nzPageIndex)]="pageIndex" [(nzTotal)]="total">
       <thead>
-      <tr>
+      <tr style="background-color: lemonchiffon">
         <th>仓库编号</th>
         <th>仓库名称</th>
         <th>仓库地址</th>
+        <th>操作
+          <span></span>
+          <button nz-button (click)="create()"><i class="anticon anticon-plus"></i></button>
+        </th>
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of list" (click)="onChange(data)">
-          <td >{{data.number}}</td>
-          <td>{{data.name}}</td>
-          <td>{{data.address}}</td>
-        </tr>
+      <tr *ngFor="let data of list" (click)="onChange(data)">
+        <td>{{data.number}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.address}}</td>
+        <td>
+          <button nz-button (click)="edit()"><i class="anticon anticon-edit"></i>
+          </button>
+          <button nz-button (click)="deleted(data)"><i class="anticon anticon-close"></i>
+          </button>
+        </td>
+      </tr>
       </tbody>
     </nz-table>
+  </div>
+  <div>
     <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnOk)="post()" (nzOnCancel)="isVisible = false">
       <!-- from -->
       <form nz-form class="login-form">

@@ -8,14 +8,12 @@ import {AppRoutingModule} from './routing/app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
-
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {WarhouseComponent} from './warhouse/warhouse.component';
 import {CommodityBrandComponent} from './commodity-brand/commodity-brand.component';
 import {GoodsComponent} from './goods/goods.component';
 import {GoodsCategoryComponent} from './goods-category/goods-category.component';
-
 
 @NgModule({
   declarations: [
@@ -36,6 +34,7 @@ import {GoodsCategoryComponent} from './goods-category/goods-category.component'
     AppRoutingModule
   ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule {
 }
