@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
       if (r.success) {
         const type = 'success';
         const routerUrl = 'home';
+        debugger
+        window.localStorage.setItem('userId', r.data.id);
         _this.message.create(type, r.msg);
         _this.router.navigateByUrl(routerUrl);
       } else {

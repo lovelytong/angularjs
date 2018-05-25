@@ -9,7 +9,7 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent  implements OnInit{
 
   ngOnInit(){
-    window.localStorage.setItem("url",'http://192.168.1.147:8091');
+    window.localStorage.setItem("url",'http://127.0.0.1:8091');
   }
 
 }
