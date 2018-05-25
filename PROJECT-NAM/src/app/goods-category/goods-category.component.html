@@ -1,3 +1,51 @@
-<p>
-  goods-category works!
-</p>
+<div nz-row class="table-div">
+  <div nz-col nzSpan="24">
+    <!-- table  -->
+    <nz-table #basicTable
+              [nzData]="list" [(nzFrontPagination)]="frontPagination"
+              [(nzPageSize)]="pageSize" (click)="pageIndexChange()"
+              [(nzPageIndex)]="pageIndex" [(nzTotal)]="total">
+      <thead>
+      <tr style="background-color: lemonchiffon">
+        <th>商品名称</th>
+        <th>操作
+          <span></span>
+          <button nz-button (click)="create()"><i class="anticon anticon-plus"></i></button>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of list" (click)="onChange(data)">
+        <td>{{data.name}}</td>
+        <td>
+          <button nz-button (click)="edit()"><i class="anticon anticon-edit"></i>
+          </button>
+          <button nz-button (click)="deleted(data)"><i class="anticon anticon-close"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnOk)="post()" (nzOnCancel)="isVisible = false">
+      <!-- from -->
+      <form nz-form class="login-form">
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="anticon anticon-user">
+              <input type="text" nz-input [(ngModel)]="goods.name" name="name" placeholder="商品名称">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <nz-input-group nzPrefixIcon="anticon anticon-lock">
+              <input type="text" nz-input [(ngModel)]="goods.id" name="address" placeholder="商品编号">
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </nz-modal>
+  </div>
+</div>
